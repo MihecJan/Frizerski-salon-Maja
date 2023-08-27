@@ -1,0 +1,796 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+ul, button, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    font: inherit;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 50px 50px;
+    font-size: 72px;
+    color: #ffffff;
+    line-height: 1;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+p {
+    font-weight: 300;
+}
+
+nav a, footer a {
+    text-decoration: none;
+}
+
+hr {
+    width: 950px;
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 120px auto;
+    box-sizing: border-box;
+}
+
+main {
+    background-color: #fafafa;
+}
+
+nav {
+    position: fixed;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: height 0.3s, background-color 0.3s;
+    border-bottom: 1px solid #dd9831;
+    z-index: 999;
+}
+
+/* Gumb za odpiranje navigacijskega menija na manjših napravah */
+.hamburger {
+    display: none;
+}
+
+/* scroll = če drsnik ni na vrhu */
+/* active = če je navigacijski meni odprt na manjših napravah */
+/* V podstraneh je navigacija vedno bela */
+nav.scroll, nav.active {
+    background-color: #fafafa;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 -5px 15px #ccc;
+}
+
+/* Če je navigacija bele barve je besedilo črne barve */
+nav.scroll li a, nav.scroll .navLogo a, nav.scroll .hamburger, nav.active li a, nav.active .navLogo a, nav.active .hamburger {
+    color: #000;
+}
+
+.navLinks, .footerLinks, .footerLinks ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navLinks li a, .navLogo a {
+    padding: 5px 15px;
+    margin: 0 15px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+p.kontakt {
+    padding: 0 20%;
+}
+
+p.kontakt a {
+    text-decoration: none;
+    color: #000;
+}
+
+p.kontakt img {
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* hover povezav v navigaciji */
+.navLinks li a:hover {
+    color: #fc6;
+}
+
+nav.scroll .navLinks li a:hover {
+    color: #aa926e;
+}
+
+.navLogo {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+header {
+    padding-top: 100px;
+    height: 100vh;
+    width: 100vw;
+    background-image: radial-gradient(#dd9831, #925d12);
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+/* Rahla senca */
+header:after {
+    content: "";
+    position: absolute;
+    top: 100vh;
+    width: 100vw;
+    height: 10px;
+    background-image: linear-gradient(#eee, transparent);
+}
+
+.headerNotMain:after {
+    top: 450px;
+}
+
+/* Naslov in gumbi v glavi */
+.headerHeading {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.heading {
+    height: 100%;
+}
+
+.button {
+    padding: 8px;
+    margin: 15px 0;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.button.header {
+    width: 170px;
+    margin: 5px;
+}
+
+.button--white {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.button--white:hover {
+    background-color: #fff;
+    color: #806b4d;
+}
+
+.button--black {
+    border: 2px solid #000;
+    color: #000;
+}
+
+.button--black:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Rezerviraj termin, crno ozadje in belo okno */
+#newWindow {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+
+    /* Izven vidnega polja */
+    top: -101vh;
+    z-index: 999;
+
+    /* Ko se opacity tranzicija konča se takoj premakne nazaj gor (delay)*/
+    transition: opacity 0.3s, top 0s linear 0.3s;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Klik na gumb "Rezerviraj termin" */
+#newWindow.opened {
+    opacity: 1;
+    top: 0;
+    transition: opacity 0.3s, top 0s linear 0s;
+}
+
+/* Belo okno */
+#newWindow .window {
+    height: 500px;
+    width: 1000px;
+    box-sizing: border-box;
+    padding: 50px 0;
+    position: absolute;
+    top: -400px;
+    left: 50%;
+    background-color: #fafafa;
+    transform: translate(-50%, -50%);
+    transition: top 0.3s ease-in;
+}
+
+#newWindow.opened .window {
+    top: 50%;
+    transition: top 0.3s ease-out;
+}
+
+/* Križec, ki zapre "#newWindow" */
+.close {
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    height: 50px;
+    width: 50px;
+    padding: 50px;
+    cursor: pointer;
+}
+
+/* div */
+.headerImg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 48%;
+}
+
+/* img */
+.headerImgImg {
+    display: block;
+    transition: 1s;
+    transform: translateX(0);
+    transform: scaleX(1);
+    opacity: 1;
+    transition: transform 490ms ease-out, opacity 0.5s;
+}
+
+/* Tranzicije za sliko v glavi */
+.headerImgImg.slide {
+    transform: translateX(100%);
+    transition: transform 490ms ease-in;
+}
+
+.headerImgImg.rotate {
+    transform: scaleX(0);
+    transition: transform 490ms ease-in;
+}
+
+.headerImgImg.loading {
+    opacity: 0.75;
+}
+
+/* Loading spinner, ko se slika nalaga */
+.headerImgSpinner {
+    visibility: hidden;
+    position: absolute;
+    font-size: 40px;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.headerImgSpinner.loading {
+    visibility: visible;
+}
+
+/* Gumbi za upravljanje diaprojekcije */
+.sliderOptions {
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sliderOptions img {
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    fill: #fff;
+    display: inline;
+}
+
+.sliderOptions img:not(.headerImgSpinner) {
+    position: relative;
+    margin: 0 20px;
+    bottom: 15px;
+}
+
+/* Glava podstrani */
+.headerNotMain {
+    height: 450px;
+    background-image: url(images/pattern.jpg);
+}
+
+.headerNotMain .headerHeading {
+    margin: 0 auto;
+    top: 175px;
+}
+
+.sectionWrapper {
+    background-color: #fff;
+    width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 0 1px #bbb, 0 10px 10px #f3f3f3;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+section:nth-child(1) {
+    padding-top: 100px;
+}
+
+section:nth-child(4n + 3) {
+    flex-direction: row-reverse;
+}
+
+section:last-child {
+    padding-bottom: 70px;
+}
+
+/* Vsebina v section */
+.text {
+    width: 550px;
+    font-size: 18px;
+}
+
+.text h2 {
+    width: 400px;
+    line-height: 1;
+    margin: 0 auto;
+}
+
+.text p {
+    margin: 20px 30px;
+}
+
+/* div */
+.image {
+    overflow: hidden;
+    height: 500px;
+    width: 500px;
+    margin-top: 10px;
+}
+
+/* img */
+.image img {
+    width: 100%;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+/* sekcija v podstraneh */
+section.sectionNotMain {
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionNotMain .text {
+    width: 960px;
+}
+
+.sectionNotMain .image:not(.square) {
+    width: 960px;
+    margin-top: 20px;
+}
+
+/* cenik */
+table {
+    width: 900px;
+    margin: 20px auto 50px;
+    border-collapse: collapse;
+    border: 1px solid #ffe5c5;
+}
+
+th, td {
+    padding: 0 16px;
+}
+
+th {
+    text-align: left;
+    background-color: #ffe5c5;
+}
+
+td {
+    background-color: #fff4e7;
+}
+
+tr:nth-child(even) td {
+    background-color: #fffaf5;
+}
+
+tr {
+    height: 70px;
+}
+
+td:nth-child(1) {
+    width: 60%;
+}
+
+/* noga */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding-top: 50px;
+}
+
+/* povezave v nogi */
+.footerLinks {
+    justify-content: space-around;
+}
+
+.footerLinks li {
+    margin-top: 10px;
+}
+
+.footerLinks h2 {
+    margin-top: -20px;
+    text-align: left;
+}
+
+/* Povezave, ki vodijo na določen del spletne strani */
+.footerSubLinks {
+    flex-direction: column;
+    height: 250px;
+}
+
+.footerLinks a {
+    color: #fff;
+}
+
+.footerSubLinks a {
+    color: #aaa;
+}
+
+p.kontakt.footer {
+    padding: 0;
+    text-align: left;
+    color: #aaa;
+}
+
+p.footer.kontakt a {
+    color: #aaa;
+}
+
+/* Copyright */
+.copy {
+    color: #aaa;
+    padding: 10px 15px;
+}
+
+@media only screen and (max-width: 1180px) {
+    .button--white {
+        padding: 10px;
+        width: 190px;
+    }
+    .headerHeading {
+        width: 600px;
+    }
+    #newWindow .window {
+        width: 650px;
+    }
+    .headerImg {
+        width: 60%;
+    }
+    hr {
+        width: 750px;
+    }
+    .sectionWrapper {
+        width: 900px;
+    }
+    .text {
+        font-size: 17px;
+    }
+    .sectionNotMain .text {
+        width: 905px;
+    }
+    table {
+        width: 840px;
+    }
+    tr {
+        height: 75px;
+    }
+    .image {
+        width: 300px;
+    }
+    .sectionNotMain .image:not(.square) {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    hr {
+        width: 550px;
+    }
+    .button--white {
+        padding: 12px;
+        width: 200px;
+    }
+    .headerHeading {
+        width: 100%;
+        left: 0;
+    }
+    .headerImgSpinner {
+        top: -75px;
+    }
+    .sliderOptions {
+        bottom: -14px;
+    }
+    .headerImg {
+        width: 50%;
+        left: 260px;
+        overflow: visible;
+    }
+    .sectionWrapper {
+        width: 700px;
+    }
+    section:nth-child(1n) {
+        flex-direction: column;
+        align-items: center;
+    }
+    .text {
+        width: 600px;
+        font-size: 16px;
+    }
+    .sectionNotMain .text {
+        width: 665px;
+    }
+    table {
+        width: 600px;
+    }
+    tr {
+        height: 80px;
+    }
+    .image {
+        width: 545px;
+    }
+    .sectionNotMain .image {
+        width: 620px;
+        height: 620px;
+    }
+    .footerLinks {
+        flex-wrap: wrap;
+    }
+    p.kontakt.footer {
+        padding: 0 20%;
+    }
+    .footerKontakt, .footerKontakt h2 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    hr {
+        width: 80%;
+    }
+    h1 {
+        font-size: 64px;
+    }
+    nav {
+        justify-content: space-between;
+    }
+    nav.active {
+        height: 400px;
+        flex-wrap: wrap;
+    }
+    .navLinks {
+        display: none;
+        order: 3;
+        width: 100%;
+    }
+    .navLinks li {
+        height: 100px;
+        text-align: center;
+    }
+    .navLinks li a {
+        position: relative;
+        top: 38px;
+        padding: 20px 50px;
+    }
+    nav.active .navLinks {
+        display: block;
+    }
+    .hamburger {
+        display: block;
+        color: #fff;
+        font-size: 36px;
+        padding-right: 30px;
+        cursor: pointer;
+    }
+    .button--white {
+        padding: 14px;
+        width: 208px;
+    }
+    .headerImgSpinner {
+        top: -14px;
+        left: -50px;
+    }
+    #newWindow .window {
+        width: 500px;
+    }
+    p.kontakt {
+        padding: 0 80px;
+    }
+    .headerImg {
+        width: 60%;
+        left: 195px;
+    }
+    .sectionWrapper {
+        width: 100%;
+    }
+    .sectionNotMain .text {
+        width: 100%;
+    }
+    .text {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    table {
+        width: 90%;
+    }
+    tr {
+        height: 90px;
+    }
+    .image {
+        width: 100%;
+        height: 700px;
+    }
+    .sectionNotMain .image:not(.square) {
+        width: 100%;
+    }
+    .sectionNotMain .image {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 50px;
+        margin: 20px;
+    }
+    .text h2 {
+        width: 90%;
+    }
+    .button--white {
+        padding: 18px;
+        margin-bottom: 20px;
+        width: 202px;
+    }
+    .button--white:hover {
+        background-color: #fff;
+        color: #806b4d;
+        cursor: pointer;
+    }
+    .headerButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .headerImgSpinner {
+        top: -64px;
+        left: 50%;
+    }
+    .headerNotMain:after {
+        top: 490px;
+    }
+    .headerNotMain {
+        height: 490px;
+    }
+    #newWindow .window {
+        width: 350px;
+    }
+    p.kontakt {
+        padding: 2% 8%;
+        font-size: 15px;
+    }
+    p.kontakt img {
+        height: 20px;
+        vertical-align: middle;
+    }
+    .headerImg {
+        width: 80%;
+        left: 20px;
+    }
+    table {
+        width: 100%;
+    }
+    tr {
+        height: 100px;
+    }
+    td, th {
+        width: 0px;
+    }
+    p.kontakt.footer {
+        padding: 0 10%;
+    }
+    .footerLinks {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    h1 {
+        margin: 15px 10px;
+        font-size: 45px;
+    }
+    #newWindow .window {
+        width: 100vw;
+    }
+    p.kontakt {
+        padding: 3% 4%;
+        font-size: 14px;
+    }
+    p.kontakt img {
+        height: 20px;
+        vertical-align: middle;
+    }
+    .headerImg {
+        width: 100%;
+        left: 0;
+    }
+    div.image {
+        height: 500px;
+    }
+    .sliderOptions img:not(.headerImgSpinner) {
+        margin: 0 5px;
+    }
+    tr {
+        height: 110px;
+    }
+    td, th {
+        padding: 6px;
+    }
+    p.kontakt.footer {
+        padding: 0 5%;
+        font-size: 14px;
+    }
+    p.kontakt.footer a {
+        font-size: 14px;
+    }
+    .footerLinks {
+        flex-direction: column;
+        text-align: center;
+    }
+}

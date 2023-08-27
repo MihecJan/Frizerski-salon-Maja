@@ -1,0 +1,19 @@
+{
+  "name": "frizerski-salon-maja",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "babel script.js -d build"
+  },
+  "author": "Miha Jan",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "babel-preset-minify": "^0.5.1"
+  },
+  "dependencies": {
+    "css-minify": "^1.1.0"
+  }
+}

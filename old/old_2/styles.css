@@ -1,0 +1,607 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+p, button, nav span, div, body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+h2, h3, h4 {
+    font-family: 'Libre Bodoni', 'Montserrat', serif;
+}
+
+.btn {
+    border-radius: 5px;
+    border: none;
+    padding: 5px 20px 7px 20px;
+    position: relative;
+    cursor: pointer;
+}
+    
+.btn .btn_under {
+    position: absolute;
+    height: 1px;
+    left: 20px;
+    right: 50px; /*depends on width*/
+    bottom: 5px;
+    transition: 300ms right;
+}
+    
+body .btn:hover .btn_under { /* body - so it doesn't get overriden */
+    right: 20px;
+}
+
+p {
+    color: #333;
+}
+
+.rezerviraj_window_dim {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0;
+    transition: 300ms opacity;
+}
+
+.rezerviraj_window {
+    background: #ddf;
+    border: 1px solid #aaa ;
+    border-radius: 10px;
+    z-index: 100;
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 500px;
+    opacity: 0;
+    transform: translate(-50%, -75%);
+    transition: 300ms transform, 300ms opacity;
+}
+
+.rezerviraj_window.opened {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rezerviraj_window_dim.opened {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rezerviraj_window h4 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.rezerviraj_window .container, footer .container {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.rezerviraj_window .container img, footer .container img {
+    padding: 0 20px;
+}
+
+.rezerviraj_window .container p, footer .container p {
+    margin: 5px;
+}
+
+.window_lokacija_container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    height: 250px;
+    width: 100%;
+}
+
+.window_map, .window_lokacija_container img {
+    margin: 20px;
+    box-shadow: 0 0 12px -5px #000;
+    border-radius: 10px;
+}
+
+.window_map .map {
+    border-radius: 10px;
+}
+
+.close_window {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rezerviraj_window .social {
+    position: absolute;
+    right: 30px;
+    top: 20%;
+}
+
+nav {
+    position: fixed;
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    background: #eef;
+    z-index: 100;
+}
+
+nav.landing {
+    background: transparent;
+    transition: 300ms;
+}
+
+nav.scroll {
+    background: #eef;
+    height: 60px;
+}
+
+nav.scroll:after {
+    opacity: 1;
+}
+
+.logo {
+    background-color: url("assets/logo.svg");
+    height: 50px;
+    width: 50px;
+}
+
+nav.scroll ul li a {
+    color: black;
+}
+
+nav ul {
+    width: 50vw;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+}
+
+nav ul li {
+    position: relative;
+}
+
+.nav_link_text {
+    padding: 15px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+.landing .nav_link_text {
+    color: #fff;
+}
+
+.nav_link_text:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 20px;
+    right: 85px;
+    bottom: 0;
+    background-color: #333;
+    box-shadow: 0 0 5px #333;
+    transition: 300ms right;
+}
+
+.landing .nav_link_text:after {
+    background-color: #fff;
+    box-shadow: 0 0 5px #fff;
+    transition: 300ms right;
+}
+
+.nav_link_text:hover::after {
+    right: 20px
+}
+
+.scroll .nav_link_text {
+    color: #333;
+}
+
+.scroll .nav_link_text::after {
+    background-color: #333;
+    box-shadow: 0 0 5px #333;
+}
+
+nav ul li:hover a {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+nav.scroll ul li:hover a {
+    text-shadow: 0 0 5px rgba(51, 51, 51, 0.5);
+}
+
+.header {
+    height: 100vh;
+    position: relative;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(to top right, rgba(1, 21, 22, 0.8), rgba(2, 41, 43, 0.2) 80%),
+        linear-gradient(to bottom, rgba(1, 21, 24, 0.8), rgba(0, 0, 0, 0) 25%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.heading {
+    position: absolute;
+    bottom: 30%;
+    left: 12%;
+}
+
+.heading .slogan {
+    color: #eed;
+    margin-top: 20px;
+    font-size: 20px;
+    position: absolute;
+    left: 280px
+}
+
+.heading .btn {
+    background: #ddc;
+    position: absolute;
+    bottom: -100px;
+    left: 2px;
+    padding: 10px 33px;
+    transition: 250ms background-color;
+    z-index: 3;
+}
+
+.heading .btn.play {
+    z-index: -1;
+}
+
+.heading .btn:hover {
+    background: #ffe;
+}
+
+.heading .btn .btn_under {
+    background: #000;
+    right: 122px;
+}
+
+h1 {
+    line-height: 1;
+    font-size: 64px;
+    margin: 0;
+    color: #ffe;
+    position: relative;
+}
+
+h1 span {
+    font-size: 120px;
+}
+
+.hero {
+    width: 100%;
+    height: 100%;
+}
+
+.hero .btn.play {
+    padding: 0;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    height: 50px;
+    width: 70px;
+    cursor: pointer;
+    z-index: 99;
+    background-image: url("assets/play_circle_FILL0_wght400_GRAD0_opsz48.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+.hero .play img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/bg_salon_edit.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.header_video {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    z-index: 2;
+    transition: 1000ms opacity;
+}
+
+.header_video.visible {
+    opacity: 1;
+}
+
+main {
+    position: relative;
+}
+
+h3 {
+    font-size: 60px;
+    text-align: center;
+    background: #ddf;
+    margin: 0;
+    padding: 40px 0;
+    color: rgb(3, 26, 24);
+}
+.cards {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    grid-gap: 30px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 50px;
+    background: #ddf;
+}
+
+.full_card_wrapper {
+    justify-self: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    width: 400px;
+    height: 620px;
+    top: 0;
+    left: 0;
+    transition: 200ms top, 200ms left, 200ms background-color;
+}
+
+.full_card_wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;    
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 30, 30, 0.5);
+    opacity: 0;
+    transition: 200ms opacity;
+}
+
+.card_wrapper {
+    height: 301px;
+    width: 402px;
+    z-index: 10;
+    transform: translateY(-1px);
+    overflow: hidden;
+    outline: 1px solid transparent; /* smooth edges*/
+    border-radius: 10px 10px 0 0;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(50%);
+    transition: 200ms filter, 200ms transform;
+}
+
+.card1 {background-image: url("assets/zensko_modno_strizenje.jpg");}
+.card2 {background-image: url("assets/mosko_strizenje.jpg"); background-position: center 5%;}
+.card3 {background-image: url("assets/otrosko_strizenje.jpg");}
+.card4 {background-image: url("assets/ostale_storitve.jpg");}
+
+.card:before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0), rgba(1, 29, 31, 0.5));
+    box-shadow: inset 0 0 70px rgba(1, 29, 31, 0.4);
+    border-radius: 10px 10px 0 0;
+    opacity: 1;
+    transition: 200ms opacity;
+}
+
+.full_card_wrapper .btn {
+    z-index: 1;
+}
+
+.full_card_wrapper a {
+    align-self: flex-start;
+    padding-left: 30px;
+}
+
+.full_card_wrapper:hover {
+    background: #fff;
+}
+
+.full_card_wrapper:hover .card {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.full_card_wrapper:hover::before {
+    opacity: 1;
+}
+
+.full_card_wrapper:hover .card:before {
+    opacity: 0;
+}
+
+.cards h4 {
+    text-align: center;
+    line-height: 1.1;
+    font-size: 36px;
+    margin: 10px 0 6px 0;
+    z-index: 10;
+}
+
+.cards p {
+    margin: 10px 30px;
+}
+
+.cards .btn {
+    background: #333;
+    color: #fff;
+    transition: 300ms background-color;
+    margin: 5px;
+}
+
+.cards .btn .btn_under {
+    right: 95px;
+    background-color: #fff;
+}
+
+.cards .btn:hover {
+    background: #000;
+}
+
+.about {
+    position: relative;
+    background: #ddf;
+}
+
+.about .lokacija {
+    width: 100vw;
+    height: 50vh;
+    padding-top: 20px;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+.about img {
+    position: relative;
+    z-index: 1;
+}
+
+.about p {
+    width: 60ch;
+    margin: 0 auto;
+}
+
+.about .vhod, .about .salon {
+    width: 500px;
+    margin: 50px 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about .salon {
+    margin: 0;
+}
+
+footer {
+    background: #333;
+    height: 200px;
+}
+
+footer .container:not(.contact .container) {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+}
+
+footer .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+footer .links {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+footer .nav_links {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+footer .nav_links li {
+    list-style-type: none;
+}
+
+footer p, footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer img {
+    filter: invert(1);
+}
+
+footer .social {
+    position: absolute;
+    color: #fff;
+    right: 50px;
+    bottom: 0;
+    display: flex;
+}
+
+.social div{
+    height: 30px;
+    width: 30px;
+    filter: invert(1);
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rezerviraj_window .social div {
+    filter: none;
+}
+
+.fb {
+    background-image: url("assets/facebook.svg");
+}
+
+footer .copy {
+    background: #333;
+    color: #aaa;
+    font-size: 12px;
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+}

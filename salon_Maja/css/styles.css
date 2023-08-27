@@ -1,0 +1,262 @@
+/*-- Body Reset --*/
+body {
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  color: #616971;
+  background-image: url(../img/pattern.jpg);
+}
+
+.custom-font-family {
+  font-family: "Libre Bodoni"!important;
+}
+
+
+/*============= NAVIGATION =============*/
+.navbar-brand img {
+  height: 3.2rem;
+}
+
+.navbar {
+  font-size: 1.15rem;
+  font-weight: 600;
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.nav-item {
+  padding: .5rem
+}
+
+
+/*============= CAROUSEL =============*/
+#carousel {
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.15);
+}
+
+.carousel-inner {
+  max-height: calc(100vh - 70px)!important;
+}
+
+/*---Change Carousel Transition Speed --*/
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  transition: transform 1.2s ease;
+}
+
+/*-- Carousel Content --*/
+.carousel-caption {
+  position: absolute;
+  top: 65%;
+  transform: translateY(-50%);
+}
+
+.carousel-caption.small {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.carousel-caption .container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-caption .bg-custom {
+  background-color: rgba(0, 0, 0, .4);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: .5rem;
+}
+
+.carousel-caption.small .bg-custom {
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+  border-radius: .5rem;
+}
+
+.carousel-caption h1 {
+  font-size: 3.2rem;
+  line-height: 1;
+  text-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.6)
+}
+
+.carousel-caption.small h1 {
+  font-size: 2rem;
+  line-height: 1;
+  text-shadow: .08rem .08rem .2rem rgba(0, 0, 0, 0.6)
+}
+
+.border-top {
+  border-top-width: 0.15rem!important;
+}
+
+.carousel-caption h3 {
+  font-size: 2rem;
+  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.6)
+}
+
+.carousel-caption.small h3 {
+  font-size: 1.5rem;
+  text-shadow: .08rem .08rem .15rem rgba(0, 0, 0, 0.6)
+}
+
+.btn-lg {
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+.carousel-caption.small .lead {
+  font-size: 1rem;
+}
+
+.img-wrapper {
+  overflow: hidden;
+}
+
+.img-wrapper img {
+  transition: transform .4s ease;
+}
+
+.img-wrapper img:hover {
+  transform: scale(1.1);
+}
+
+
+/*===== FIXED BACKGROUND IMG =====*/
+.fixed-background {
+  padding: 10rem 0;
+}
+
+.fixed {
+  background-image: url(../img/services-collage.jpg);
+  filter: blur(3px);
+  position: fixed;
+}
+
+.fixed-background {
+  overflow: hidden; /*-- Correction for iOS --*/
+}
+
+
+
+/*=========== MODAL =========== */
+.modal-body img {
+  box-shadow: .2rem .3rem .3rem rgba(0, 0, 0, .2);
+}
+
+
+
+/*============= FOOTER =============*/
+footer {
+  background-color: #383838;
+  padding: 1rem 2rem 3rem;
+}
+
+footer img {
+  height: 3.5rem;
+  margin: 1.5rem auto;
+  filter: invert(1);
+}
+
+footer p, footer a,
+.socket a {
+  color: white;
+  text-decoration: none;
+}
+
+ul.social {
+  list-style-type: none;
+  display: flex;
+  max-width: 8rem;
+  margin: 0 auto;
+  padding: 0;
+}
+
+ul.social li {
+  margin: 0 auto;
+}
+
+ul.social .svg-inline--fa {
+  font-size: 2.3rem;
+}
+
+ul.social .svg-inline--fa:hover {
+  color: #C1A784;
+}
+
+
+/*============= SOCKET =============*/
+.socket {
+  background: #222222;
+  border-top: .1rem solid #C1A784;
+}
+
+
+/*============= MEDIA QUERIES =============*/
+
+/* Devices under 1199px (xl) */
+@media (max-width: 1199.98px) {
+
+}
+/* Devices under 768px (md) */
+@media (max-width: 767.98px) {
+
+}
+
+
+/*============ BOOTSTRAP BREAK POINTS:
+
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+=============*/
+
+/*-- Bootstrap Mobile Gutter Fix --*/
+.row, .container-fluid {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/*-- Fixed Background Image --*/
+.fixed-background {
+  position: relative;
+  width: 100%;
+  z-index: 1000!important;
+}
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999 !important;
+}
+.fixed {
+  z-index: -999!important;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0) scale(1.1);
+  transform: translateZ(0) scale(1.1);
+  will-change: transform;
+}

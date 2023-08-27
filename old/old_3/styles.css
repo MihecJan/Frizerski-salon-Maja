@@ -1,0 +1,681 @@
+body {
+  margin: 0;
+  background-color: #F5F5F5;
+  font-family: "Montserrat", "sans-serif";
+  color: #34363a;
+}
+
+body .textCenter {
+  text-align: center;
+}
+
+nav {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100vw;
+  background: linear-gradient(90deg, #F5F5F5, #eee4d2);
+  z-index: 10;
+  box-shadow: 0 0 5px #999999;
+}
+nav .navLogo {
+  width: 65px;
+}
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  list-style-type: none;
+  margin: auto;
+}
+nav ul li a {
+  text-decoration: none;
+  padding: 10px 5px;
+  margin: 5px;
+  color: #34363a;
+  font-size: 18px;
+  transition: 250ms color;
+}
+nav .navSocial {
+  text-decoration: none;
+}
+nav .navSocial .circle {
+  padding: 9px 0 0 16px;
+  margin: 10px 20px;
+  color: #34363a;
+  background-color: #eee4d2;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+header.landingPage {
+  height: 80vh;
+  background-image: url(assets/happy-girl-curly-hair-mobile-update.jpg);
+}
+
+header {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50vh;
+  background-image: url(assets/frizerski-pripomocki-mobile.jpg);
+  background-size: cover;
+  background-position: center;
+}
+header .container.landingPage {
+  bottom: 30%;
+}
+header .container {
+  position: absolute;
+  left: 50%;
+  bottom: 40%;
+  transform: translate(-50%, 50%);
+}
+header .container h1 {
+  font-family: "Montserrat", serif;
+  font-size: 40px;
+  line-height: 1;
+  text-align: center;
+  width: 12ch;
+  margin: 50px 0;
+  color: #eee4d2;
+  text-shadow: 2px 3px 10px #34363a;
+}
+header .container button {
+  position: relative;
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+  padding: 10px 30px;
+  background: linear-gradient(90deg, #34363a, #34363a);
+  color: #F5F5F5;
+  border-radius: 5px;
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  transition: 150ms;
+}
+header .container button:hover {
+  filter: invert(0.2);
+  color: white;
+}
+header .headerLogo {
+  display: none;
+}
+
+.kontaktOkno {
+  height: 80vh;
+  width: 100%;
+  position: fixed;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  top: -50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 101;
+  opacity: 0;
+  transition: 250ms;
+}
+.kontaktOkno ul.kontakt {
+  list-style-type: none;
+  padding: 50px 0 0 15px;
+}
+.kontaktOkno ul.kontakt li {
+  margin: 5px 0;
+  font-size: 16px;
+}
+.kontaktOkno ul.kontakt li a {
+  color: #34363a;
+}
+.kontaktOkno ul.kontakt li.narocanjeInfo::before {
+  content: "\e88e";
+  font-family: "Material Icons";
+  margin: 10px;
+}
+.kontaktOkno ul.kontakt li.telefon::before {
+  content: "\e0b0";
+  font-family: "Material Icons";
+  margin: 10px;
+}
+.kontaktOkno ul.kontakt li.lokacija::before {
+  content: "\e0c8";
+  font-family: "Material Icons";
+  margin: 10px;
+}
+.kontaktOkno .container {
+  width: 100%;
+  top: 80px;
+}
+.kontaktOkno .container .vhod {
+  background-image: url("assets/vhod-v-salon.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 40vh;
+  border-radius: 5px;
+  box-shadow: 0 0 10px -2px #34363a;
+}
+.kontaktOkno a.maps {
+  margin: 15px auto;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #34363a;
+}
+.kontaktOkno button.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #34363a;
+  color: #F5F5F5;
+  font-size: 20px;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  transition: 150ms;
+  cursor: pointer;
+}
+.kontaktOkno button.close:hover {
+  background-color: #999999;
+  color: white;
+}
+.kontaktOkno button.close::before {
+  content: "\e5cd";
+  font-family: "Material Icons";
+}
+
+.kontaktOkno.show {
+  opacity: 1;
+  top: 50vh;
+}
+
+.kontaktOknoDim {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: 250ms;
+  pointer-events: none;
+}
+
+.kontaktOknoDim.show {
+  opacity: 1;
+}
+
+main {
+  background-color: #F5F5F5;
+}
+
+h2 {
+  font-family: "Libre Bodoni", "Montserrat", serif;
+  font-size: 60px;
+  text-align: center;
+  padding: 35px 0 10px 0;
+  margin: 0;
+}
+
+.special {
+  background-color: #eee4d2;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  box-shadow: 0 0 10px red;
+  width: 300px;
+  position: absolute;
+  top: 100vh;
+}
+.special img {
+  border-radius: 5px;
+  margin-right: 20px;
+}
+.special p {
+  max-width: 40ch;
+  align-self: center;
+}
+
+section {
+  background-image: url(assets/pattern.jpg);
+}
+
+section.storitve {
+  position: relative;
+  margin-bottom: 100px;
+  background-size: cover;
+}
+section.storitve .cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 100px;
+}
+section.storitve .cardContainer .card {
+  background-color: #eee4d2;
+  margin: 12px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 20px -10px #34363a;
+  position: relative;
+}
+section.storitve .cardContainer .card .image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transition: 250ms;
+  filter: grayscale(0.3) saturate(0.9);
+}
+section.storitve .cardContainer .card ul {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 0 10px 40px;
+}
+section.storitve .cardContainer .card .zenskoModnoStrizenje {
+  background-image: url(assets/zensko-modno-strizenje.jpg);
+}
+section.storitve .cardContainer .card .moskoStrizenje {
+  background-image: url(assets/mosko-strizenje.jpg);
+}
+section.storitve .cardContainer .card .otroskoStrizenje {
+  background-image: url(assets/otrosko-strizenje.jpg);
+}
+section.storitve .cardContainer .card .likanjeLas {
+  background-image: url(assets/likanje-las.jpg);
+}
+section.storitve .cardContainer .card .trajnaVolumen {
+  background-image: url(assets/trajna_volumen.jpg);
+}
+section.storitve .cardContainer .card .razbarvanjeLas {
+  background-image: url(assets/razbarvanje-las.jpg);
+}
+section.storitve .cardContainer .card .prameni {
+  background-image: url(assets/prameni.jpg);
+  background-position: top;
+}
+section.storitve .cardContainer .card .lakBalzamUtrjevalec {
+  background-image: url(assets/lak-balzam-utrjevalec-las.jpg);
+}
+section.storitve .cardContainer .card .pranjeLas {
+  background-image: url(assets/pranje-las.jpg);
+}
+section.storitve .cardContainer .card .strizenjeSStrojckom {
+  background-image: url(assets/strizenje-s-strojckom.jpg);
+  background-position: top;
+}
+section.storitve .cardContainer .card .ostaleStoritve {
+  background-image: url(assets/happy-girl-curly-hair.jpg);
+}
+section.storitve .cardContainer .card h3 {
+  text-align: center;
+  font-size: 30px;
+  margin: 15px auto 0 auto;
+}
+section.storitve .cardContainer .card p {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 10px 25px;
+}
+section.storitve .cardContainer .card:hover .image {
+  transform: scale(1.05) translateY(-5px);
+  filter: grayscale(0) saturate(1.05) contrast(1.05);
+}
+section.storitve button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 1;
+  padding: 10px 30px;
+  background-color: #b89c77;
+  color: #F5F5F5;
+  border-radius: 5px;
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  transition: 150ms;
+}
+section.storitve button.shadow {
+  box-shadow: 0 0 150px 150px #F5F5F5;
+}
+section.storitve button:hover {
+  background-color: #d3bc9c;
+  color: white;
+}
+section.storitve .underButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+section.storitve.notLanding {
+  margin-bottom: 30px;
+}
+section.storitve.notLanding ul li {
+  margin: 10px 10px 10px 0;
+}
+section.storitve.notLanding ul li a {
+  color: #b89c77;
+}
+section.storitve.notLanding .cardContainer {
+  padding-bottom: 70px;
+}
+
+section.storitve.notLanding::after {
+  content: none;
+}
+
+section.storitve::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 800px;
+  background: linear-gradient(to top, #F5F5F5, rgba(255, 255, 255, 0.5) 33%, transparent);
+}
+
+section.kontakt::before {
+  content: "";
+  background-image: url("assets/frizerski-pripomocki-mobile.jpg");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 1;
+}
+
+section.kontakt {
+  position: relative;
+  padding-top: 50vh;
+  overflow: hidden;
+}
+section.kontakt p {
+  width: 40ch;
+  max-width: 80%;
+  margin: 10px auto;
+  line-height: 1.4;
+}
+section.kontakt .lokacija iframe {
+  width: 100vw;
+  height: 50vh;
+  margin: 20px 0 50px 0;
+}
+section.kontakt video {
+  position: relative;
+  width: 100%;
+  max-height: 80vh;
+  bottom: 0px;
+}
+
+footer {
+  background-color: #191c21;
+  color: #999999;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto;
+  padding-top: 50px;
+}
+footer ul {
+  margin: 20px;
+}
+footer ul.kontakt {
+  list-style-type: none;
+  padding: 0;
+}
+footer ul.kontakt li {
+  margin: 10px;
+}
+footer ul.kontakt .narocanjeInfo::before {
+  content: "\e88e";
+  font-family: "Material Icons";
+  margin: 10px;
+}
+footer ul.kontakt .telefon::before {
+  content: "\e0b0";
+  font-family: "Material Icons";
+  margin: 10px;
+}
+footer ul.kontakt .lokacija::before {
+  content: "\e0c8";
+  font-family: "Material Icons";
+  margin: 10px;
+}
+footer ul.kontakt a {
+  color: #999999;
+}
+footer ul.links {
+  list-style-type: none;
+  padding: 0;
+}
+footer ul.links a {
+  color: #999999;
+  text-decoration: none;
+}
+footer ul.links li {
+  margin: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+footer ul.links button.open {
+  color: #999999;
+  border: none;
+  background-color: transparent;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+footer .social {
+  position: relative;
+  text-align: center;
+  color: #34363a;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 20px;
+}
+footer .social::after {
+  content: "f";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #999999;
+}
+footer .copy {
+  text-align: center;
+  margin: 20px 0 5px 0;
+}
+
+@media only screen and (min-width: 650px) {
+  header.landingPage {
+    background-image: url(assets/happy-girl-curly-hair-update.jpg);
+  }
+  section.storitve .cardContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  section.storitve .cardContainer .card {
+    width: 300px;
+  }
+  section.storitve.notLanding ul {
+    width: 630px;
+    margin: 0 auto;
+    padding: 10px 0 10px 20px;
+  }
+  section.storitve.notLanding ul li {
+    margin: 10px 10px 10px 0;
+  }
+  section.storitve.notLanding .cardContainer {
+    padding-bottom: 70px;
+  }
+  .kontaktOkno {
+    width: 500px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media only screen and (min-width: 970px) {
+  header {
+    background-image: url(assets/frizerski-pripomocki.jpg);
+  }
+  header.landingPage {
+    height: 100vh;
+    background-position-x: left;
+  }
+  header.landingPage .container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: none;
+  }
+  header.landingPage .container h1 {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px;
+    width: 10ch;
+  }
+  header.landingPage .container button {
+    position: absolute;
+    left: 665px;
+    top: auto;
+    bottom: 12%;
+  }
+  h2 {
+    padding: 100px 0 30px 0;
+  }
+  section.storitve .cardContainer {
+    width: 900px;
+    margin: 0 auto;
+  }
+  section.storitve .cardContainer .card {
+    width: 400px;
+  }
+  section.kontakt::before {
+    background-image: url("assets/frizerski-pripomocki.jpg");
+  }
+  section.kontakt video {
+    width: 900px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  section.storitve.notLanding .card {
+    margin: 14px;
+  }
+  section.storitve.notLanding ul {
+    width: 835px;
+    padding: 20px 0 20px 20px;
+  }
+  footer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 250px 70px 50px;
+    grid-template-areas: "kontakt kontakt kontakt links links links" ". . social social . ." "copy copy copy copy copy copy";
+  }
+  footer .kontakt {
+    grid-area: kontakt;
+    justify-self: center;
+  }
+  footer .links {
+    grid-area: links;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "domov storitve kontakt";
+    margin-right: 70px;
+  }
+  footer .links a.domov {
+    grid-area: domov;
+  }
+  footer .links a.storitve {
+    grid-area: storitve;
+  }
+  footer .links button {
+    grid-area: kontakt;
+    align-self: start;
+    margin: 20px;
+  }
+  footer .social {
+    grid-area: social;
+  }
+  footer .copy {
+    grid-area: copy;
+  }
+}
+@media only screen and (min-width: 1350px) {
+  header.landingPage .container button {
+    left: 49%;
+  }
+  header.landingPage .headerLogo {
+    display: block;
+    height: 150px;
+    width: 150px;
+    background-image: url("assets/elise-logos/wordmark-pictorial-black-on-white.png");
+    background-size: cover;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  section.storitve .cardContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1000px;
+  }
+  section.storitve .cardContainer .card {
+    width: 450px;
+  }
+  section.kontakt::before {
+    height: 40vh;
+  }
+  section.kontakt {
+    padding-top: 40vh;
+  }
+  section.kontakt p {
+    width: 60ch;
+  }
+  section.kontakt .lokacija iframe {
+    height: 40vh;
+  }
+  section.kontakt video {
+    width: 1280px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  section.storitve.notLanding .card {
+    margin: 15px;
+  }
+  section.storitve.notLanding ul {
+    width: 935px;
+  }
+  footer {
+    grid-template-areas: "kontakt kontakt . . links links" ". . social social . ." "copy copy copy copy copy copy";
+  }
+}/*# sourceMappingURL=styles.css.map */
