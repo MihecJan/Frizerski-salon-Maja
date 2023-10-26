@@ -1,8 +1,0 @@
-  27/08/2023 20:06:36: Starting composition “Pre-comp 1”.
-
-  Output To: C:\Users\Miha\Desktop\salon_maja_new.avi    27/08/2023 20:14:56: Finished composition “Pre-comp 1”.
-
-
-  Total Time Elapsed: 8 Min, 20 Sec
-Log closed on 27/08/2023 at 20:14:56
-
